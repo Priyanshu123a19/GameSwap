@@ -33,8 +33,9 @@
     margin-left: 0; /* Ensure no extra margin is added to the Headline */
 }
 .profile-card-container {
-    position: absolute;
-    top: 60px; /* Adjust to match the height of the navbar */
-    left: 10px; /* Align with the ProfileButton */
+    position: absolute; /* Position the card relative to the navbar */
+    top: 60px; /* Space below the ProfileButton */
+    left: 20px; /* Add space from the left edge of the screen */
     z-index: 1000; /* Ensure it appears above other elements */
+    padding: 10px; /* Add padding around the card */
   }
