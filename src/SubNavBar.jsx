@@ -20,6 +20,17 @@ const SubNavBar = () => {
 }
 
 const StyledWrapper = styled.div`
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  margin-top: 20px; /* Space between MainNavBar and SubNavBar */
+
+  .nav {
+    position: relative;
+    width: 400px; /* Fixed width for the nav */
+    height: 60px;
+  }
+
   .outline {
     position: absolute;
     inset: 0;
@@ -33,15 +44,8 @@ const StyledWrapper = styled.div`
     stroke: #fff;
   }
 
-  .nav {
-    position: relative;
-    width: 400px;
-    height: 60px;
-  }
-
   .container:hover .outline .rect {
     transition: 999999s;
-    /* Must specify these values here as something *different* just so that the transition works properly */
     stroke-dashoffset: 1;
     stroke-dasharray: 0;
   }
@@ -92,6 +96,6 @@ const StyledWrapper = styled.div`
     stroke-dashoffset: 0;
     stroke-dasharray: 0 0 10 40 10 40;
     transition: 0.5s !important;
-  }`;
-
+  }
+`;
 export default SubNavBar;
