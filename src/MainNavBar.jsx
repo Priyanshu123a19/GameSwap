@@ -3,10 +3,14 @@ import "./MainNavBar.css"; // Add a CSS file for styling
 import Radio from "./Radio"; // Import the Radio component
 import Headline from "./Headline"; // Import the Headline component
 import Button from "./Button"; // Import the Button component
+import ProfileButton from "./ProfileButton"; // Import the ProfileButton component
 
 function MainNavBar() {
   return (
     <div className="main-navbar">
+      <div className="navbar-left">
+        <ProfileButton /> {/* Add the ProfileButton component */}
+      </div>
       <div className="navbar-center">
         <Radio /> {/* Keep the Radio component in the center */}
       </div>
