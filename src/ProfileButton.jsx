@@ -1,217 +1,68 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ProfileButton = () => {
+const ProfileButton = ({ onClick }) => {
   return (
     <StyledWrapper>
-      <button className="button">
-        <div>
-          <div>
-            <div>Pill button</div>
-          </div>
-        </div>
+      <button className="Btn" onClick={onClick}>
+        Pay
+        <svg className="svgIcon" viewBox="0 0 576 512">
+          <path d="M512 80c8.8 0 16 7.2 16 16v32H48V96c0-8.8 7.2-16 16-16H512zm16 144V416c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V224H528zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm56 304c-13.3 0-24 10.7-24 24s10.7 24 24 24h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H120zm128 0c-13.3 0-24 10.7-24 24s10.7 24 24 24H360c13.3 0 24-10.7 24-24s-10.7-24-24-24H248z" />
+        </svg>
       </button>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
-  .button {
-    --stone-50: #fafaf9;
-    --stone-800: #292524;
-    --yellow-400: #facc15;
-
-    font-family: "Rubik", sans-serif;
-    cursor: pointer;
-    position: relative;
-    display: inline-flex;
+  .Btn {
+    width: 130px;
+    height: 40px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    line-height: 1;
-    font-size: 0.8rem; /* Reduce font size for better fit */
-    border-radius: 1rem;
-    outline: 2px solid transparent;
-    outline-offset: 6px;
-    color: var(--stone-50);
-    height: 50px; /* Set height to fit within the navbar */
-    padding: 0 10px; /* Adjust padding for a compact fit */
+    background-color: rgb(15, 15, 15);
+    border: none;
+    color: white;
+    font-weight: 600;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    overflow: hidden;
+    transition-duration: 0.3s;
+  }
 
-    &:active {
-      outline-color: var(--yellow-400);
-    }
+  .svgIcon {
+    width: 16px;
+  }
 
-    &:focus-visible {
-      outline-color: var(--yellow-400);
-      outline-style: dashed;
-    }
+  .svgIcon path {
+    fill: white;
+  }
 
-    &::before {
-      content: "";
-      position: absolute;
-      z-index: 0;
-      height: 150%; /* Scale down the decorative effect */
-      max-height: 60px; /* Ensure it doesn't exceed the navbar height */
-      aspect-ratio: 1;
-      margin: auto;
-      background: white;
-      clip-path: polygon(
-        100% 50%,
-        91.48% 56.57%,
-        97.55% 65.45%,
-        87.42% 69.07%,
-        90.45% 79.39%,
-        79.7% 79.7%,
-        79.39% 90.45%,
-        69.07% 87.42%,
-        65.45% 97.55%,
-        56.57% 91.48%,
-        50% 100%,
-        43.43% 91.48%,
-        34.55% 97.55%,
-        30.93% 87.42%,
-        20.61% 90.45%,
-        20.3% 79.7%,
-        9.55% 79.39%,
-        12.58% 69.07%,
-        2.45% 65.45%,
-        8.52% 56.57%,
-        0% 50%,
-        8.52% 43.43%,
-        2.45% 34.55%,
-        12.58% 30.93%,
-        9.55% 20.61%,
-        20.3% 20.3%,
-        20.61% 9.55%,
-        30.93% 12.58%,
-        34.55% 2.45%,
-        43.43% 8.52%,
-        50% 0%,
-        56.57% 8.52%,
-        65.45% 2.45%,
-        69.07% 12.58%,
-        79.39% 9.55%,
-        79.7% 20.3%,
-        90.45% 20.61%,
-        87.42% 30.93%,
-        97.55% 34.55%,
-        91.48% 43.43%
-      );
+  .Btn::before {
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    content: "";
+    background-color: white;
+    border-radius: 50%;
+    left: -100%;
+    top: 0;
+    transition-duration: 0.3s;
+    mix-blend-mode: difference;
+  }
 
-      animation: star-rotate 4s linear infinite;
-      opacity: 0.1;
-    }
+  .Btn:hover::before {
+    transition-duration: 0.3s;
+    transform: translate(100%, -50%);
+    border-radius: 0;
+  }
 
-    &:hover::before {
-      opacity: 1;
-    }
-
-    & > div {
-      padding: 2px;
-      border-radius: 1rem;
-      background-color: var(--yellow-400);
-      transform: translate(-4px, -4px);
-      transition: all 150ms ease;
-      box-shadow:
-        0.5px 0.5px 0 0 var(--yellow-400),
-        1px 1px 0 0 var(--yellow-400),
-        1.5px 1.5px 0 0 var(--yellow-400),
-        2px 2px 0 0 var(--yellow-400),
-        2.5px 2.5px 0 0 var(--yellow-400),
-        3px 3px 0 0 var(--yellow-400),
-        0 0 0 2px var(--stone-800),
-        0.5px 0.5px 0 2px var(--stone-800),
-        1px 1px 0 2px var(--stone-800),
-        1.5px 1.5px 0 2px var(--stone-800),
-        2px 2px 0 2px var(--stone-800),
-        2.5px 2.5px 0 2px var(--stone-800),
-        3px 3px 0 2px var(--stone-800),
-        3.5px 3.5px 0 2px var(--stone-800),
-        4px 4px 0 2px var(--stone-800),
-        0 0 0 4px var(--stone-50),
-        0.5px 0.5px 0 4px var(--stone-50),
-        1px 1px 0 4px var(--stone-50),
-        1.5px 1.5px 0 4px var(--stone-50),
-        2px 2px 0 4px var(--stone-50),
-        2.5px 2.5px 0 4px var(--stone-50),
-        3px 3px 0 4px var(--stone-50),
-        3.5px 3.5px 0 4px var(--stone-50),
-        4px 4px 0 4px var(--stone-50);
-
-      .button:hover & {
-        transform: translate(0, 0);
-        box-shadow:
-          0 0 0 0 var(--yellow-400),
-          0 0 0 0 var(--yellow-400),
-          0 0 0 0 var(--yellow-400),
-          0 0 0 0 var(--yellow-400),
-          0 0 0 0 var(--yellow-400),
-          0 0 0 0 var(--yellow-400),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 2px var(--stone-800),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50),
-          0 0 0 4px var(--stone-50);
-      }
-
-      & > div {
-        position: relative;
-        pointer-events: none;
-        border-radius: calc(1rem - 2px);
-        background-color: var(--stone-800);
-
-        &::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: 1rem;
-          opacity: 0.1;
-          background-image: radial-gradient(
-              rgb(255 255 255 / 80%) 20%,
-              transparent 20%
-            ),
-            radial-gradient(rgb(255 255 255 / 100%) 20%, transparent 20%);
-          background-position:
-            0 0,
-            4px 4px;
-          background-size: 8px 8px;
-          mix-blend-mode: hard-light;
-          box-shadow: inset 0 0 0 1px var(--stone-800);
-          animation: dots 0.4s infinite linear;
-          transition: opacity 150ms ease;
-        }
-
-        & > div {
-          position: relative;
-          display: flex;
-          align-items: center;
-          padding: 0.5rem 1rem; /* Adjust padding for compact fit */
-          gap: 0.25rem;
-          filter: drop-shadow(0 -1px 0 var(--stone-800));
-
-          &:hover {
-            filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.1));
-          }
-
-          &:active {
-            transform: translateY(2px);
-          }
-        }
-      }
-    }
+  .Btn:active {
+    transform: translate(5px, 5px);
+    transition-duration: 0.3s;
   }
 `;
 
